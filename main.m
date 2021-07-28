@@ -8,7 +8,7 @@ L=0.2032; % Pendulum arm length
 [t,y]=ode45(@(t,y) pendulum(t,y,m,L),[0 5],[0;0;0;0.349066;0.349066]);
 
 th1=y(:,4); 
-th2=y(:,5);
+th2=y(:,4);
 
 figure
 subplot(2,1,1)
@@ -19,3 +19,6 @@ subplot(2,1,2)
 plot(t,th2,'r')
 xlabel("Time (s)")
 ylabel('\theta_2')
+
+figure
+plot(t,th1,'r',t,th2,'b--o')
