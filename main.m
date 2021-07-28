@@ -1,14 +1,11 @@
 clc; clear;
 
 %% Parameters 
-m=0.288; % Mass of each pendulum 
-g=9.8; % Gravitational acceleration  
+m=0.288; % Mass of each pendulum   
 L=0.2032; % Pendulum arm length 
-tspan = [0 5];
-yo=[10*pi/180 0 10*pi/180 0]; % In phase 
-options=odeset('RelTol',1e-4,'AbsTol',1e-8);
 
-[t,y]=ode45(@(t,y) pendulum(t,y,m,L),tspan,yo,options); 
+% Initial conditions: Theta 1, Theta 2 set to 20 degrees = 0.349066 radian
+[t,y]=ode45(@(t,y) pendulum(t,y,m,L),[0 5],[0;0;0;0.349066;0.349066]);
 
 th1=y(:,4); 
 th2=y(:,5);
