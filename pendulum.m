@@ -6,8 +6,8 @@ function dydt=pendulum(t,Y,m,L)
     % Y(5)=theta 2 (pendulum 2 angle)
     
     J=m*L^2; % Point mass
-    g=9.8; % Gravitational acceleration
-    k=0.01672; % Spring constant 
+    g=9.81; % Gravitational acceleration
+    k=17; % Spring constant 
     
     % State variable equations (L1=L2 -> a=0)
     Y1=(-cos(Y(4))*k*Y(3))-(sin(Y(4))*m*g); 
