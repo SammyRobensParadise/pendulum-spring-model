@@ -1,0 +1,18 @@
+% p_1=x(1)
+% p_2=x(2)
+% q_k=x(3)
+% th_1=x(4)
+% th_2=x(5)
+% x_1=x(6)
+% x_2=x(7)
+% y_1=x(8)
+% y_2=x(9)
+% alp=x(10)
+k=1;
+m_1=1;
+m_2=1;
+g=10;
+% [p_1_dot,p_2_dot,q_k_dot,theta_1_dot,theta_2_dot,x_1_dot,x_2_dot,y_1_dot,y_2_dot,alp_dot]
+vector=@(t,x) [((-1)*(cos(x(4))*cos(x(10))))-(sin(x(5))*((m_1*g)+(k*x(3)*sin(x(10)))));(((cos(x(5))*cos(x(10))*k*x(3))-(sin(x(5))*(m_2*g-(k*x(3)*sin(x(10)))))));((cos(x(10))*((x(1)/m_1)*cos((x(5)))-((x(2)/))))];
+
+
