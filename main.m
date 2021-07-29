@@ -1,24 +1,26 @@
 clc; clear;
 
-%% Parameters 
-m=0.288; % Mass of each pendulum   
+% Parameters 
+m_1=0.288;    
+m_2=0.288;
 L=0.2032; % Pendulum arm length 
+d=0.2667; % Initial distance between pendulum
 
-% Initial conditions: Theta 1, Theta 2 set to 20 degrees = 0.349066 radian
-[t,y]=ode45(@(t,y) pendulum(t,y,m,L),[0 5],[0;0;0;0.349066;0.349066]);
+% Initial condition: th_1 = 20 degrees (0.349 radians), th_2 = 0 degrees
+[t,y]=ode45(@(t,y) pendulum_2(t,y,m_1,m_2,L,d),[0 100],[0;0;0;0.349;0;0;0;0;0;0]);
 
-th1=y(:,4); 
-th2=y(:,4);
+% th1=y(:,4); 
+% th2=y(:,5);
 
-figure
-subplot(2,1,1)
-plot(t,th1,'b')
-xlabel("Time (s)")
-ylabel('\theta_1')
-subplot(2,1,2)
-plot(t,th2,'r')
-xlabel("Time (s)")
-ylabel('\theta_2')
+% figure
+% subplot(2,1,1)
+% plot(t,th1,'b')
+% xlabel("Time (s)")
+% ylabel('\theta_1')
+% subplot(2,1,2)
+% plot(t,th2,'r')
+% xlabel("Time (s)")
+% ylabel('\theta_2')
 
-figure
-plot(t,th1,'r',t,th2,'b--o')
+plot(t,y(:,4),'b',t,y(:,5),'r');
+xlabel('Time (s)'), ylabel('\theta')
