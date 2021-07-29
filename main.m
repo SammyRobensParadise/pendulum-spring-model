@@ -7,7 +7,7 @@ L=0.2032; % Pendulum arm length
 d=0.2667; % Initial distance between pendulum
 
 % Initial condition: th_1 = 20 degrees (0.349 radians), th_2 = 0 degrees
-[t,y]=ode45(@(t,y) pendulum_2(t,y,m_1,m_2,L,d),[0 100],[0;0;0;0.349;0;0;0;0;0;0]);
+[t,y]=ode45(@(t,y) pendulum_2(t,y,m_1,m_2,L,d),[0 10],[0;0;0;0.349;0;0;0;0;0;0]);
 
 % th1=y(:,4); 
 % th2=y(:,5);

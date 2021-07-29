@@ -11,9 +11,10 @@ function dydt=pendulum_2(t,Y,m_1,m_2,L,d)
     % Y(10)=alpha 
     
     % Constants
-    k=0.1; % Spring constant  
+    k=77.2; % Spring constant since 5 springs in total with same constant
+            % k_tot= (n/k)^-1,n=5
     g=9.81; % Gravitational constant 
-    b=0.5;
+    b=2.5;
     % State variable equations 
     Y1=(-1*cos(Y(4))*cos(Y(10))*k*Y(3))-(sin(Y(4))*((m_1*g)+(sin(Y(10))*k*Y(3))))-b*(sin(Y(1))*m_1);
     Y2=(cos(Y(5))*cos(Y(10))*k*Y(3))-(sin(Y(5))*((m_2*g)-(sin(Y(10))*k*Y(3))))-b*(sin(Y(2))*m_1);
