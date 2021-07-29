@@ -22,5 +22,6 @@ d=0.2667; % Initial distance between pendulum
 % xlabel("Time (s)")
 % ylabel('\theta_2')
 
-plot(t,y(:,4),'b',t,y(:,5),'r');
-xlabel('Time (s)'), ylabel('\theta')
+plot(t,y(:,4)*180/pi,'b',t,y(:,5)*180/pi,'r');
+xlabel('Time (s)'), ylabel('\theta (degrees)')
+legend('\theta_1','\theta_2')
