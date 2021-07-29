@@ -1,22 +1,29 @@
-% p_1=x(1)
-% p_2=x(2)
-% q_k=x(3)
-% th_1=x(4)
-% th_2=x(5)
-% x_1=x(6)
-% x_2=x(7)
-% y_1=x(8)
-% y_2=x(9)
-% alp=x(10)
-k=17;
-m_1=0.288;
-m_2=0.288;
-g=9.81;
-L=0.2032;
-d=0.2667;
-% [p_1_dot,p_2_dot,q_k_dot,theta_1_dot,theta_2_dot,x_1_dot,x_2_dot,y_1_dot,y_2_dot,alp_dot]
-vector=@(t,x) [((-1)*(cos(x(4))*cos(x(10)))*k*x(3))-(sin(x(4))*((m_1*g)+(k*x(3)*sin(x(10)))));(((cos(x(5))*cos(x(10))*k*x(3))-(sin(x(5))*(m_2*g-(k*x(3)*sin(x(10)))))));((cos(x(10))*((x(1)/m_1)*cos((x(4)))-((x(2)/m_2)*cos(x(5)))))+(sin(x(10))*((x(1)/m_1)*sin((x(4)))-((x(2)/m_2)*sin(x(5))))));(x(1)/(L*m_1));((x(2)/(L*m_2)));(x(1)/m_1)*cos(x(4));(x(2)/m_2)*cos(x(5));(x(1)/m_1)*sin(x(4));(x(2)/m_2)*sin(x(5));atan((L-L+x(9)-x(8))/(d+x(7)-x(6)))];
-[t,xa] = ode45(vector,[0 10],[1 0.5 1 1 1 1 1 1 1 1]);
-
-plot(t,xa(:,6),'b',t,xa(:,7),'r',t,xa(:,8),'g',t,xa(:,9),'m');
-xlabel('t'), ylabel('meters')
+function dydt=pendulum_2(t,Y,m_1,m_2,L,d)
+    % Y(1)=p_1 
+    % Y(2)=p_2 
+    % Y(3)=q_k 
+    % Y(4)=th_1 
+    % Y(5)=th_2 
+    % Y(6)=x_1
+    % Y(7)=x_2
+    % Y(8)=y_1
+    % Y(9)=y_2
+    % Y(10)=alpha 
+    
+    % Constants
+    k=0.1; % Spring constant  
+    g=9.81; % Gravitational constant 
+    b=0.5;
+    % State variable equations 
+    Y1=(-1*cos(Y(4))*cos(Y(10))*k*Y(3))-(sin(Y(4))*((m_1*g)+(sin(Y(10))*k*Y(3))))-b*(sin(Y(1))*m_1);
+    Y2=(cos(Y(5))*cos(Y(10))*k*Y(3))-(sin(Y(5))*((m_2*g)-(sin(Y(10))*k*Y(3))))-b*(sin(Y(2))*m_1);
+    Y3=(cos(Y(10))*((cos(Y(4))*Y(1)/m_1)-((cos(Y(5))*Y(2)/m_2))))+(sin(Y(10))*((sin(Y(4))*Y(1)/m_1)-((sin(Y(5))*Y(2)/m_2))));
+    Y4=(Y(1)/(L*m_1));
+    Y5=(Y(2)/(L*m_2));
+    Y6=cos(Y(4))*(Y(1)/m_1);
+    Y7=cos(Y(5))*(Y(2)/m_2);
+    Y8=sin(Y(4))*(Y(1)/m_1);
+    Y9=sin(Y(5))*(Y(2)/m_2);
+    Y10=atan((Y(9)-Y(8))/(d+Y(7)-Y(6)));
+    dydt=[Y1;Y2;Y3;Y4;Y5;Y6;Y7;Y8;Y9;Y10];
+end
