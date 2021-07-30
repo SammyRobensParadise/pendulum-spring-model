@@ -14,10 +14,11 @@ function dydt=pendulum_2(t,Y,m_1,m_2,L,d)
     k=77.2; % Spring constant since 5 springs in total with same constant
             % k_tot= (n/k)^-1,n=5
     g=9.81; % Gravitational constant 
-    b=2.5;
+    b=2.5; % Damping
+    
     % State variable equations 
-    Y1=(-1*cos(Y(4))*cos(Y(10))*k*Y(3))-(sin(Y(4))*((m_1*g)+(sin(Y(10))*k*Y(3))))-b*(sin(Y(1))*m_1);
-    Y2=(cos(Y(5))*cos(Y(10))*k*Y(3))-(sin(Y(5))*((m_2*g)-(sin(Y(10))*k*Y(3))))-b*(sin(Y(2))*m_1);
+    Y1=(-1*cos(Y(4))*cos(Y(10))*k*Y(3))-(sin(Y(4))*((m_1*g)+(sin(Y(10))*k*Y(3))))-(b*sin(Y(1))*m_1);
+    Y2=(cos(Y(5))*cos(Y(10))*k*Y(3))-(sin(Y(5))*((m_2*g)-(sin(Y(10))*k*Y(3))))-(b*sin(Y(2))*m_2);
     Y3=(cos(Y(10))*((cos(Y(4))*Y(1)/m_1)-((cos(Y(5))*Y(2)/m_2))))+(sin(Y(10))*((sin(Y(4))*Y(1)/m_1)-((sin(Y(5))*Y(2)/m_2))));
     Y4=(Y(1)/(L*m_1));
     Y5=(Y(2)/(L*m_2));
