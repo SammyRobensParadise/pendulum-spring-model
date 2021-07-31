@@ -15,7 +15,7 @@ d=0.2667; % Initial distance between two pendulums
 % y1 = 2cm (0.02m)
 % y2 = 5mm (0.005m)
 % alpha = 5deg (0.0873rad)
-[t,y]=ode45(@(t,y) pendulum_2(t,y,m_1,m_2,L_1,L_2,d),[0 10],[0;0;0;0.524;0.349;0.05;0.03;0.02;0.005;0.0873]);
+[t,y]=ode45(@(t,y) pendulum_2(t,y,m_1,m_2,L_1,L_2,d),[0 15],[0;0;0;0.524;0.349;0.05;0.03;0.02;0.005;0.0873]);
 
 % Graph in separate figures: 
 % th1=y(:,4); 
